@@ -5,18 +5,21 @@ MAINTAINER Michael Soh
 # Set non-interactive mode for apt-get
 ENV DEBIAN_FRONTEND noninteractive
 
-# Initialize apt
-RUN apt-get update
+# Add the repository entry for postfix
+RUN echo "deb http://ppa.launchpad.net/pdoes/postfix/ubuntu xenial main" \
+    > /etc/apt/sources.list.d/pdoes-ubuntu-postfix-xenial.list
 
-# Add pre-requisits first
-RUN apt-get -y install software-properties-common
+# Add the keys
+# For verification, visit
+# https://launchpad.net/~pdoes/+archive/ubuntu/postfix
+RUN apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 4CBEDD5A
 
-# Add the postfix repository and update again
-RUN apt-add-repository ppa:pdoes/postfix
-RUN apt-get update
+# Initialize apt and install packages.  Upon success, delete the cache
+# to keep the image size down.
+RUN apt-get update && apt-get install -y \
+    opendkim \
+    opendkim-tools \
+    postfix \
+    postfix-mysql \
+    && rm -rf /var/lib/apt/lists/*
 
-# Install postfix packages
-RUN apt-get -y install supervisor postfix postfix-mysql opendkim opendkim-tools
-
-# Run
-CMD /opt/install.sh;/usr/bin/supervisord -c /etc/supervisor/supervisord.conf
