@@ -1,0 +1,11 @@
+### THIS FILE WAS AUTOMATICALLY CONFIGURED ###
+# This file was copied after running MySQL's dpkg available here:
+# http://dev.mysql.com/downloads/repo/apt/
+# 
+# You may comment out entries below, but any other modifications may be lost.
+# Use command 'dpkg-reconfigure mysql-apt-config' as root for modifications.
+deb http://repo.mysql.com/apt/ubuntu/ xenial mysql-apt-config
+deb http://repo.mysql.com/apt/ubuntu/ xenial mysql-5.6
+deb http://repo.mysql.com/apt/ubuntu/ xenial mysql-tools
+#deb http://repo.mysql.com/apt/ubuntu/ xenial mysql-tools-preview
+deb-src http://repo.mysql.com/apt/ubuntu/ xenial mysql-5.6
