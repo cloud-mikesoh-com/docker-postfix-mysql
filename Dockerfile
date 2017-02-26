@@ -36,4 +36,8 @@ RUN apt-get update && apt-get install -y \
 #   Finally, delete the cache
     && rm -rf /var/lib/apt/lists/*
 
-CMD ["/usr/bin/supervisord"]
+VOLUME /etc/postfix
+
+COPY ./docker-entrypoint.sh
+
+ENTRYPOINT ["/docker-entrypoint.sh"]
