@@ -39,5 +39,6 @@ RUN apt-get update && apt-get install -y \
 VOLUME /etc/postfix
 
 COPY ./docker-entrypoint.sh /
+RUN chmod +x /docker-entrypoint.sh
 
 ENTRYPOINT ["/docker-entrypoint.sh"]
