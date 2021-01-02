@@ -5,9 +5,9 @@ meaning that the Dockerfile was used as a reference but enough changes
 were made that direct contribution may not necessarily be necessary but
 would not be in the spirit of Open Source.
 
-## This image is still under active development
+## This image is no longer under development
 
-I am actively building this image as of February 20, 2017.
+This project is archived as of 1/1/2021.
 
 ## Image Requirements
 
